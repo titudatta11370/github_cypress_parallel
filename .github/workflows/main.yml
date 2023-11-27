@@ -40,8 +40,8 @@ jobs:
         if: always()
         continue-on-error: true
         with:
-          ref: gh-pages
-          path: gh-pages
+          ref: pages-gh
+          path: pages-gh
 
       - name: Allure Report action from marketplace
         uses: simple-elf/allure-report-action@master
@@ -53,8 +53,8 @@ jobs:
 
       - name: Deploy report to Github Pages
         if: always()
-        uses: peaceiris/actions-gh-pages@v2
+        uses: peaceiris/actions-pages-gh@v2
         env:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
+          PUBLISH_BRANCH: pages-gh
           PUBLISH_DIR: allure-history
